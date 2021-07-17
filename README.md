@@ -224,3 +224,68 @@ journey
       Go downstairs: 5: Me
       Sit down: 5: Me
 ```
+
+
+```mermaid
+classDiagram
+Class01 <|-- AveryLongClass : Cool
+Class03 *-- Class04
+Class05 o-- Class06
+Class07 .. Class08
+Class09 --> C2 : Where am i?
+Class09 --* C3
+Class09 --|> Class07
+Class07 : equals()
+Class07 : Object[] elementData
+Class01 : size()
+Class01 : int chimp
+Class01 : int gorilla
+Class08 <--> C2: Cool label
+```
+
+```mermaid
+erDiagram
+
+Trouble_records ||--|{ Logs : belongs_to_trouble_records
+Cases ||--o{ Trouble_records : has_many_cases
+Categories ||--o{ Trouble_records : has_many_categories
+Statuses ||--o{ Trouble_records : has_many_statuses
+
+Trouble_records {
+  AutoField record_id
+  ForeignKey case_id
+  ForeignKey category_id
+  ForeignKey status_id
+  CharField title
+  TextField contents
+  IntegerField priority
+  DateTimeField created_at
+  CharField editor
+  CharField assignees
+  CharField reporter
+  IntegerField reporter_phone
+  EmailField reporter_mail
+}
+
+Logs {
+  AutoField log_id
+  ForeignKey record_id
+  DateTimeField changed_at
+  TextField chages
+}
+
+Cases {
+  AutoField case_id
+  TextField case_name
+}
+
+Categories {
+  AutoField category_id
+  TextField category_name
+}
+
+Statuses {
+  AutoField status_id
+  TextField status_name
+}
+```
